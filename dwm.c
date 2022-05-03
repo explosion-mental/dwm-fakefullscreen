@@ -139,6 +139,7 @@ typedef struct {
 	const char *title;
 	unsigned int tags;
 	int isfloating;
+	int isfakefullscreen;
 	int monitor;
 } Rule;
 
@@ -304,6 +305,7 @@ applyrules(Client *c)
 		{
 			c->isfloating = r->isfloating;
 			c->tags |= r->tags;
+			c->fakefullscreen = r->isfakefullscreen;
 			for (m = mons; m && m->num != r->monitor; m = m->next);
 			if (m)
 				c->mon = m;
